@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>rock-sissors-paper</title>
+
+	<script defer src="script.js"></script>
+
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<h2>가위 바위 보 게임!</h2>
+	</header>
+	<main>
+		<section class="sec-game">
+			<div class="player-user">
+				<p>당신의 선택</p>
+				<a href="javascript:void(0)"><img src="images/rock.png" alt="가위"><span>바위</span></a>
+				<a href="javascript:void(0)"><img src="images/sissors.png" alt="바위"><span>가위</span></a>
+				<a href="javascript:void(0)"><img src="images/paper.png" alt="보"><span>보</span></a>
+			</div>
+			<div class="player-com">
+				<p>컴퓨터의 선택</p>
+				<img src="images/rock.png" alt="가위"><span>바위</span>
+				<img src="images/sissors.png" alt="바위"><span>가위</span>
+				<img src="images/paper.png" alt="보"><span>보</span>
+			</div>
+		</section>
+		<section class="sec-result">
+			<ul class="result-list">
+				<li class="result-item"></li>
+			</ul>
+			<a class="reset-btn" href="javascript:void(0)">다시하기</a>
+		</section>
+	</main>
+</body>
+</html>
