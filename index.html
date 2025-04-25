@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>rock-sissors-paper</title>
-
-	<script defer src="script.js"></script>
-
-	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>rock-sissors-paper</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
+
 <body>
-	<header>
-		<h2>가위 바위 보 게임!</h2>
-	</header>
-	<main>
-		<section class="sec-game">
-			<div class="player-user">
-				<p>당신의 선택</p>
-				<a href="javascript:void(0)"><img src="images/rock.png" alt="가위"><span>바위</span></a>
-				<a href="javascript:void(0)"><img src="images/sissors.png" alt="바위"><span>가위</span></a>
-				<a href="javascript:void(0)"><img src="images/paper.png" alt="보"><span>보</span></a>
-			</div>
-			<div class="player-com">
-				<p>컴퓨터의 선택</p>
-				<img src="images/rock.png" alt="가위"><span>바위</span>
-				<img src="images/sissors.png" alt="바위"><span>가위</span>
-				<img src="images/paper.png" alt="보"><span>보</span>
-			</div>
-		</section>
-		<section class="sec-result">
-			<ul class="result-list">
-				<li class="result-item"></li>
-			</ul>
-			<a class="reset-btn" href="javascript:void(0)">다시하기</a>
-		</section>
-	</main>
+    <header>
+        <h2>가위 바위 보 게임!</h2>
+    </header>
+    <div class="frame" id="frame1">
+        <p>PLAYER님은 총 열 판의 가위바위보 게임을 컴퓨터와 대결하게 될 것입니다. 컴퓨터와의 대결에서 승리하세요!</p>
+        <div><img src="images/charactor.png" alt="토까캐릭터"></div>
+    </div>
+    <div class="frame" id="frame2">
+        <p>PLAYER님, 가위, 바위, 보 중 한가지를 선택해주세요!</p>
+        <div class="select-wrap">
+            <a href="javascript:void(0)" class="player-selelct"><img src="images/sissors.png" alt="가위"><span>가위</span></a>
+            <a href="javascript:void(0)" class="player-selelct"><img src="images/rock.png" alt="바위"><span>바위</span></a>
+            <a href="javascript:void(0)" class="player-selelct"><img src="images/paper.png" alt="보"><span>보</span></a>
+        </div>
+    </div>
+    <div class="frame" id="frame3">
+        <div class="player-selected-wrap">
+            <div>
+                <h4>PLAYER님의 선택</h4><img src="images/sissors.png" alt="가위"><span>가위</span>
+            </div>
+        </div>
+        <div class="computer-selected-wrap">
+            <div>
+                <h4>컴퓨터의 선택</h4><img src="images/paper.png" alt="보"><span>보</span>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <span>이겼습니다! ^.^</span>
+            <div><img src="images/charactor.png" alt="토까캐릭터"></div>
+            <button type="button" class="next-game" onclick="nextRound()">다음게임</button>
+        </div>
+    </div>
+    <div class="frame" id="frame4">
+        <div class="final-result">
+            <div id="sparkles-container"></div>
+            <div><img src="images/charactor.png" alt="토까캐릭터"></div>
+            <div class="speech-bubble">PLAYER님의 최종 승리 입니다요! ^.^</div>
+            <button class="btn-restart" onclick="resetGame()">처음부터</button>
+        </div>
+        <!-- 점수판은 공통 요소로 script에서 추가됨 -->
+    </div>
+    <footer class="sec-score">
+        <ul class="score-list">
+            <li class="score-item"></li>
+        </ul>
+    </footer>
 </body>
+
 </html>
