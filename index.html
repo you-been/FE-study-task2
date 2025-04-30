@@ -11,52 +11,58 @@
 </head>
 
 <body>
-    <header>
-        <h2>가위 바위 보 게임!</h2>
-    </header>
-    <div class="frame" id="frame1">
-        <p>PLAYER님은 총 열 판의 가위바위보 게임을 컴퓨터와 대결하게 될 것입니다. 컴퓨터와의 대결에서 승리하세요!</p>
-        <div><img src="images/charactor.png" alt="토까캐릭터"></div>
-    </div>
-    <div class="frame" id="frame2">
-        <p>PLAYER님, 가위, 바위, 보 중 한가지를 선택해주세요!</p>
-        <div class="select-wrap">
-            <a href="javascript:void(0)" class="player-selelct"><img src="images/sissors.png" alt="가위"><span>가위</span></a>
-            <a href="javascript:void(0)" class="player-selelct"><img src="images/rock.png" alt="바위"><span>바위</span></a>
-            <a href="javascript:void(0)" class="player-selelct"><img src="images/paper.png" alt="보"><span>보</span></a>
+    <div class="game-wrap">
+        <header>
+        <h2>가위 바위 보!</h2>
+        </header>
+        <div class="frame active" id="frame1">
+        <p>PLAYER님은 총 열 판의<br> 가위바위보 게임을<br> 컴퓨터와 대결하게 될 것입니다.<br> 컴퓨터와의 대결에서 승리하세요!</p>
+        <div class="charactor"><img src="images/charactor.png" alt="토까캐릭터"></div>
+        <button type="button" class="basic-btn btn-start" onclick="showFrame(2)">시작하기</button>
         </div>
-    </div>
-    <div class="frame" id="frame3">
+        <div class="frame" id="frame2">
+        <p>PLAYER님, 가위, 바위, 보 중<br> 한가지를 선택해주세요!</p>
+        <div class="select-wrap">
+            <a href="javascript:void(0)" onclick="selectChoice('가위')" class="player-select">✌️<span>가위</span></a>
+            <a href="javascript:void(0)" class="player-select" onclick="selectChoice('바위')">✊<span>바위</span></a>
+            <a href="javascript:void(0)" onclick="selectChoice('보')" class="player-select">✋<span>보</span></a>
+        </div>
+        </div>
+        <div class="frame" id="frame3">
         <div class="player-selected-wrap">
             <div>
-                <h4>PLAYER님의 선택</h4><img src="images/sissors.png" alt="가위"><span>가위</span>
+                <h4>PLAYER님의 선택</h4><strong id="playerPic"></strong><span id="playerPicTxt"></span>
             </div>
         </div>
         <div class="computer-selected-wrap">
             <div>
-                <h4>컴퓨터의 선택</h4><img src="images/paper.png" alt="보"><span>보</span>
+                <h4>컴퓨터의 선택</h4><strong id="computerPic"></strong><span id="computerPicTxt"></span>
             </div>
         </div>
         <div class="result-wrap">
-            <span>이겼습니다! ^.^</span>
+            <span id="resultTxt"></span>
             <div><img src="images/charactor.png" alt="토까캐릭터"></div>
-            <button type="button" class="next-game" onclick="nextRound()">다음게임</button>
+            <button type="button" class="baic-btn btn-next" onclick="nextRound()">다음게임</button>
         </div>
-    </div>
-    <div class="frame" id="frame4">
+        </div>
+        <div class="frame" id="frame4">
         <div class="final-result">
             <div id="sparkles-container"></div>
             <div><img src="images/charactor.png" alt="토까캐릭터"></div>
             <div class="speech-bubble">PLAYER님의 최종 승리 입니다요! ^.^</div>
-            <button class="btn-restart" onclick="resetGame()">처음부터</button>
+            <button class="baic-btn btn-restart" onclick="resetGame()">처음부터</button>
         </div>
-        <!-- 점수판은 공통 요소로 script에서 추가됨 -->
+        <div class="score-table" id="score-table">
+            <div class="score-header">현재 승 / 패</div>
+            <div class="score-row" id="player-score-row">
+                <div class="score-label">당신</div>
+            </div>
+            <div class="score-row" id="computer-score-row">
+                <div class="score-label">컴퓨터</div>
+            </div>
+        </div>
+        </div>
     </div>
-    <footer class="sec-score">
-        <ul class="score-list">
-            <li class="score-item"></li>
-        </ul>
-    </footer>
 </body>
 
 </html>
