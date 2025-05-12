@@ -66,7 +66,7 @@ header {
     font-size: 18px;
 }
 
-#frame1 .charactor {
+#frame1 .charactor  {
     height: 64px;
     margin-top: 80px;
 }
@@ -103,7 +103,9 @@ header {
     line-height: 68px;
 }
 
-#frame2 .select-wrap .player-select span {
+#frame2 .select-wrap .player-select span, 
+#frame3 .selected-inner span
+ {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +114,76 @@ header {
     border-radius: 30px;
     width: 68px;
     height: 30px;
+    color: #000;
+}
+
+
+#frame3 .selected-wrap {
+    display: flex;
+    gap: 30px;
+    color: #fff;
+}
+
+#frame3 .selected-inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#frame3 .selected-inner h4 {
+ font-size: 14px;
+ margin-bottom: 10px;
+}
+
+#frame3 .selected-inner strong {
+    font-size: 60px;
+    line-height: 68px;
+}
+
+#frame3 .result-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    margin-top: 30px;
+}
+
+#frame3 .result-wrap .result-txt,
+#frame4 .final-result .speech-bubble
+ {
+    height: 87px;
+    width: 235px;
+    background: url(./images/balloon.png) no-repeat 50% 50% / cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    padding-bottom: 18px;
+}
+
+#frame3 .result-wrap .charactor, 
+#frame4 .final-result .charactor {
+    height: 64px;
+    margin-bottom: 20px;
+}
+
+#frame3 .result-wrap .charactor img,
+#frame4 .final-result .charactor img{
+    display: inline-block;
+    height: 100%;
+}
+
+#frame4 .final-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .score-table {

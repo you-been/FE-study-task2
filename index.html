@@ -29,27 +29,29 @@
             </div>
         </div>
         <div class="frame" id="frame3">
-            <div class="player-selected-wrap">
-                <div>
+            <div class="selected-wrap">
+                <div class="player-selected-wrap">
+                <div class="selected-inner">
                     <h4>PLAYER님의 선택</h4><strong id="playerPic"></strong><span id="playerPicTxt"></span>
                 </div>
             </div>
             <div class="computer-selected-wrap">
-                <div>
+                <div class="selected-inner">
                     <h4>컴퓨터의 선택</h4><strong id="computerPic"></strong><span id="computerPicTxt"></span>
                 </div>
             </div>
-            <div class="result-wrap">
-                <span id="resultTxt"></span>
-                <div><img src="images/charactor.png" alt="토까캐릭터"></div>
+        </div>
+        <div class="result-wrap">
+                <span class="result-txt" id="resultTxt"></span>
+                <div class="charactor"><img src="images/charactor.png" alt="토까캐릭터"></div>
                 <button type="button" class="basic-btn btn-next" onclick="nextRound()">다음게임</button>
             </div>
         </div>
         <div class="frame" id="frame4">
             <div class="final-result">
-                <div><img src="images/charactor.png" alt="토까캐릭터"></div>
                 <div class="speech-bubble">PLAYER님의 최종 승리 입니다요! ^.^</div>
-                <button class="baic-btn btn-restart" onclick="gameReset()">처음부터</button>
+                <div class="charactor"><img src="images/charactor.png" alt="토까캐릭터"></div>
+                <button class="basic-btn btn-restart" onclick="gameReset()">처음부터</button>
             </div>
             <div class="score-table" id="score-table">
                 <div class="score-header">현재 승 / 패</div>
