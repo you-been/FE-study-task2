@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에겐테토 테스트</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>에겐&테토 테스트</h1>
+        <div id="gender-frame" class="frame active">
+            <h2>성별을 선택해주세요</h2>
+            <div class="gender-selection">
+                <button id="male-btn" class="basic-btn gender-btn">남성</button>
+                <button id="female-btn" class="basic-btn gender-btn">여성</button>
+            </div>
+            <div class="charactor">
+                <img src="./images/nunmung.png" alt="눈멍이캐릭터">
+            </div>
+        </div>
+        <div id="q1-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 1/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>1) 목소리가 큰 편이다.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="1"> 매우그렇다 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="2"> 약간그렇다 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="3"> 약간아니다 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="4"> 전혀아니다 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q1-next" class="basic-btn basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q2-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 2/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 20%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>2) 원칙을 따르는 편이다.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="4"> 매우그렇다 (4점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="3"> 약간그렇다 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="2"> 약간아니다 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="1"> 전혀아니다 (1점)
+                    </label>
+                </div>
+            </div>
+            <button id="q2-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q3-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 3/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>3) 혼자보다 친구들과 다니는 편이다.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="4"> 매우그렇다 (4점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="3"> 약간그렇다 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="2"> 약간아니다 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="1"> 전혀아니다 (1점)
+                    </label>
+                </div>
+            </div>
+            <button id="q3-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q4-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 4/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>4) 연애할 때 리드하는 편이다.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="1"> 매우그렇다 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="2"> 약간그렇다 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="3"> 약간아니다 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="4"> 전혀아니다 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q4-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q5-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 5/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 50%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>5) 거절을 잘 하는 편이다.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="1"> 매우그렇다 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="2"> 약간그렇다 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="3"> 약간아니다 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="4"> 전혀아니다 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q5-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q6-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 6/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>6) 내 평균 식사량은?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="1"> 2인분 이상 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="2"> 1.5인분 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="3"> 1인분 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="4"> 0.5인분 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q6-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q7-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 7/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>7) 운동을 하는 이유는?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="4"> 근력향상 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="3"> 체력증진 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="2"> 몸매관리 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="1"> 안함 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q7-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q8-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 8/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>8) 가장 선호하는 취미는?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="4"> 액티비티 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="3"> 자기계발 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="2"> 쇼핑 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="1"> 만들기 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q8-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q9-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 9/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>9) 총 코인 투자 금액은?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="4"> 천만원대이상 (1점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="3"> 백만원대 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="2"> 십만원대 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="1"> 안 함 (4점)
+                    </label>
+                </div>
+            </div>
+            <button id="q9-next" class="basic-btn nav-btn" disabled>다음</button>
+        </div>
+        <div id="q10-frame" class="frame">
+            <div class="question-degree">
+                <div class="question-number">질문 10/10</div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="question">
+                <h3>10) 사랑스럽다는 말을 자주 듣는 편이다.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="4"> 매우그렇다 (4점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="3"> 약간그렇다 (3점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="2"> 약간아니다 (2점)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="1"> 전혀아니다 (1점)
+                    </label>
+                </div>
+            </div>
+            <button id="submit-btn" class="basic-btn nav-btn" disabled>결과 확인하기</button>
+        </div>
+        <div id="result-frame" class="frame">
+            <div class="result-container">
+                <div class="result-title" id="result-title"></div>
+                <ul class="result-description" id="result-description"></ul>
+            </div>
+            <button class="basic-btn reset-btn" id="reset-btn">다시 테스트하기</button>
+        </div>
+    </div>
+</body>
+
+</html>
