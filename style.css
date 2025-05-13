@@ -34,6 +34,8 @@ header {
     padding: 8px 20px;
     border: none;
     font-family: 'DOSSaemmul', sans-serif;
+    -webkit-appearance: none;
+    appearance: none;
     color: #000;
 }
 
