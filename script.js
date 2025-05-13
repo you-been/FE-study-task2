@@ -139,7 +139,7 @@ function selectChoice(choice) {
     } else if (result === 'lose') {
         resultTxt = '졌습니다! ㅜ.ㅜ'
     } else {
-        resultTxt = '동점!-_-;'
+        resultTxt = '비겼습니다!-_-;'
     }
 
     gameResult[currentRound] = result;
@@ -204,6 +204,7 @@ function prepareResult() {
    let drawCount = 0;
 
    const  resultBubble = document.querySelector('.final-result .speech-bubble')
+const winnerDeco = document.querySelector('.winner-deco');
 
    gameResult.forEach(result => {
       if (result === 'win') {
@@ -212,17 +213,19 @@ function prepareResult() {
          loseCount++;
       }else if(result === 'draw'){
          drawCount++;
-      }
-   })
+      }})
 
    resultBubble.textContent = '';
 
    if(winCount > loseCount) {
-      resultBubble.textContent = '이겼습니다'
+    winnerDeco.style.display = 'block';
+        resultBubble.innerHTML = '사용자님의 최종<br> 승리 입니다요! ^.^'
    }else if(winCount < loseCount) {
-      resultBubble.textContent = '졌습니다'
+        winnerDeco.style.display = 'none';
+      resultBubble.innerHTML = '사용자님의 최종<br> 패배 입니다요! ㅜ.ㅜ'
    }else {
-      resultBubble.textContent = '비겼습니다'
+        winnerDeco.style.display = 'none';
+      resultBubble.innerHTML = '동도로동점!<br> 다시 승부 ㄱ?'
    }
 }
 
