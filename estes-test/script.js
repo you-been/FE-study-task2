@@ -1,38 +1,15 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
     let gender = null;
     let totalScore = 0;
+    let userResponses = {};
 
-    //프레임
-    const genderFrame = document.getElementById('gender-frame');
-    const q1Frame = document.getElementById('q1-frame');
-    const q2Frame = document.getElementById('q2-frame');
-    const q3Frame = document.getElementById('q3-frame');
-    const q4Frame = document.getElementById('q4-frame');
-    const q5Frame = document.getElementById('q5-frame');
-    const q6Frame = document.getElementById('q6-frame');
-    const q7Frame = document.getElementById('q7-frame');
-    const q8Frame = document.getElementById('q8-frame');
-    const q9Frame = document.getElementById('q9-frame');
-    const q10Frame = document.getElementById('q10-frame');
-    const resultFrame = document.getElementById('result-frame');
-
-    //버튼
+    //참조 요소
+    const container = document.querySelector('.container');
     const maleBtn = document.getElementById('male-btn');
     const femaleBtn = document.getElementById('female-btn');
-    const q1NextBtn = document.getElementById('q1-next');
-    const q2NextBtn = document.getElementById('q2-next');
-    const q3NextBtn = document.getElementById('q3-next');
-    const q4NextBtn = document.getElementById('q4-next');
-    const q5NextBtn = document.getElementById('q5-next');
-    const q6NextBtn = document.getElementById('q6-next');
-    const q7NextBtn = document.getElementById('q7-next');
-    const q8NextBtn = document.getElementById('q8-next');
-    const q9NextBtn = document.getElementById('q9-next');
-    const submitBtn = document.getElementById('submit-btn');
-    const resetBtn = document.getElementById('reset-btn');
-
-    //결과요소
+    const genderFrame = document.getElementById('gender-frame');
+    const resultFrame = document.getElementById('result-frame');
     const resultTitle = document.getElementById('result-title');
     const resultDescription = document.getElementById('result-description');
 
@@ -44,20 +21,97 @@ document.addEventListener('DOMContentLoaded', function () {
         selectGender('female');
     });
 
-    function selectGender (selectedGender) {
+    createQuestion();
+
+    const resetBtn = document.getElementById('reset-btn');
+    resetBtn.addEventListener('click', resetTest);
+
+    function selectGender(selectedGender) {
         gender = selectedGender;
 
         if (selectedGender === 'male') {
             maleBtn.classList.add('selected');
             femaleBtn.classList.remove('selected');
-        }else {
+        } else {
             maleBtn.classList.remove('selected');
             femaleBtn.classList.add('selected');
         }
 
         setTimeout(function() {
-            showFrame(q1Frame);
+            showFrame('q1-frame');
         }, 500);
+    }
+
+    function createQuestion() {
+
+        testData.questions.forEach((question, index) => {
+            const frameId = question.id + '-frame';
+            const questionNumber = index + 1;
+            //현재 과정 몇퍼센트?
+            const progress = (questionNumber / testData.questions.length) * 100;
+
+            const frame = document.createElement('div');
+            frame.id = frameId;
+            frame.className = 'frame'
+
+            frame.innerHTML = `
+                <div id="q1-frame" class="frame">
+                <div class="question-degree">
+                    <div class="question-number">질문 ${questionNumber}/${testData.questions.length} </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: ${progress}%;"></div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h3>${questionNumber}) ${question.text}</h3>
+                    <div class="options">
+                       ${createOptionsHTML(question)}
+                    </div>
+                </div>
+                <button id="${question.id}-next" class="basic-btn nav-btn" disabled>${questionNumber === testData.questions.length ? "결과 확인하기" : "다음"}</button>
+            </div>
+              `
+
+            container.insertAfter(frame, genderFrame);
+
+            setupBtnListeners(question.id, questionNumber);
+
+            setupRadioListeners(question.id);
+        })
+
+    }
+
+    function createOptionsHTML(question) {
+        return question.options.map(option =>`
+            <label class="option">
+                <input type="radio" name="${question.id}" value="${option.value}"> ${option.text} (${option.score}점)
+            </label>
+        `).join('');
+    }
+
+    function setupRadioListeners(questionId){
+        const options = document.querySelectorAll(`input[name="${questionId}""]`);
+        const nextBtn = document.getElementById(`${questionId}-next`);
+
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                nextBtn.disabled = 'false';
+
+            })
+        })
+    }
+
+    function setupBtnListeners(questionId, questionNumber) {
+        const button = document.getElementById(`${questionId}-next`);
+
+        button.addEventListener('click', function() {
+            if(questionNumber === testData.questions.length) {
+                calculateResult();
+            }else {
+                const nextQuestionId = testData.questions[questionNumber].id;
+                showFrame(nextQuestionId + '-frame');
+            }
+        })
     }
 
     function showFrame(frame) {
@@ -67,4 +121,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         frame.classList.add('active');
     }
+
+    function calculateResult() {
+
+    };
+
+    function resetTest() {
+
+    };
 })
