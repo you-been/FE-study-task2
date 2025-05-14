@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
             frame.className = 'frame'
 
             frame.innerHTML = `
-                <div id="q1-frame" class="frame">
                 <div class="question-degree">
                     <div class="question-number">질문 ${questionNumber}/${testData.questions.length} </div>
                     <div class="progress-bar">
@@ -63,16 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="question">
-                    <h3>${questionNumber}) ${question.text}</h3>
+                    <h3> ${question.text}</h3>
                     <div class="options">
                        ${createOptionsHTML(question)}
                     </div>
                 </div>
                 <button id="${question.id}-next" class="basic-btn nav-btn" disabled>${questionNumber === testData.questions.length ? "결과 확인하기" : "다음"}</button>
-            </div>
               `
 
-            container.insertAfter(frame, genderFrame);
+            container.insertBefore(frame, resultFrame);
 
             setupBtnListeners(question.id, questionNumber);
 
@@ -90,12 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setupRadioListeners(questionId){
-        const options = document.querySelectorAll(`input[name="${questionId}""]`);
+        const options = document.querySelectorAll(`input[name="${questionId}"]`);
         const nextBtn = document.getElementById(`${questionId}-next`);
 
         options.forEach(option => {
-            option.addEventListener('click', function() {
-                nextBtn.disabled = 'false';
+            option.addEventListener('change', function() {
+                nextBtn.disabled = false;
 
             })
         })
@@ -119,7 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
             element.classList.remove('active');
         })
 
-        frame.classList.add('active');
+        const targetFrame = document.getElementById(frame);
+
+        targetFrame.classList.add('active');
     }
 
     function calculateResult() {
