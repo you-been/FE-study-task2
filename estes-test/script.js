@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createOptionsHTML(question) {
         return question.options.map(option =>`
             <label class="option">
-                <input type="radio" name="${question.id}" value="${option.value}"> ${option.text} (${option.score}점)
+                <input type="radio" name="${question.id}" value="${option.score}"> ${option.text} (${option.score}점)
             </label>
         `).join('');
     }
@@ -95,6 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
             option.addEventListener('change', function() {
                 nextBtn.disabled = false;
 
+            userResponses[questionId] = {
+                value: this.value,
+                score: parseInt(this.value)    
+            }
             })
         })
     }
@@ -103,11 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const button = document.getElementById(`${questionId}-next`);
 
         button.addEventListener('click', function() {
+            if(userResponses[questionId]) {
+                totalScore += userResponses[questionId].score;
+            }
+
             if(questionNumber === testData.questions.length) {
                 calculateResult();
             }else {
                 const nextQuestionId = testData.questions[questionNumber].id;
-                showFrame(nextQuestionId + '-frame');
+                showFrame(nextQuestionId + '-frame');              
             }
         })
     }
@@ -123,10 +131,63 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateResult() {
+        showFrame('result-frame');
+
+        const resultData = determineResult(gender, totalScore);
+
+        resultTitle.textContent = resultData.title;
+        resultDescription.textContent = resultData.description;
+
+        if(Array.isArray(resultData.description)) {
+            resultDescription.innerHTML = '';
+            const resultUl = document.createElement('ul');
+            resultData.description.forEach(item => {
+                const resultLi = document.createElement('li');
+                resultLi.textContent = item;
+                resultUl.appendChild(resultLi);
+            })
+            resultDescription.appendChild(resultUl);
+        }else {
+            resultDescription.textContent = resultData.description;
+        }
 
     };
 
+    function determineResult(gender, score) {
+
+        let resultKey;
+
+        if (gender === 'male') {
+            resultKey = score >= 25 ? "egen_male" : "teto_male";
+        }else if(gender === 'female'){
+            resultKey = score >= 25 ? "egen_female" : "teto_female";
+        }else {
+            return {
+                title: "결과를 알 수 없습니다.",
+                description: "성별 정보가 없습니다. 다시 테스트 해주세요."
+            }
+        }
+
+        return testData.results[resultKey];
+    }
+
     function resetTest() {
 
+        gender = null;
+        totalScore = 0;
+        userResponses = {};
+
+        maleBtn.classList.remove('selected');
+        femaleBtn.classList.remove('selected');
+
+        document.querySelectorAll('.next-btn').forEach(btn => {
+            btn.disabled = 'true';
+        });
+
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.cheked = false;
+        })
+
+        showFrame('gender-frame');
     };
 })
