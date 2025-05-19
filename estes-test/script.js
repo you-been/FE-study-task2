@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return question.options.map(option =>`
             <label class="option">
                 <input type="radio" name="${question.id}" value="${option.score}"> ${option.text} (${option.score}점)
+                <span class="checkmark"></span>
             </label>
         `).join('');
     }

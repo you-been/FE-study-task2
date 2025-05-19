@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Cafe24Moyamoya-Regular-v1.0';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/Cafe24Moyamoya-Regular-v1.0.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 button {
     color: inherit;
     -webkit-appearance: none;
@@ -15,7 +22,7 @@ button {
 
 button.basic-btn {
     height: 40px;
-    padding: 0 20px;
+    padding: 0 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,8 +59,64 @@ body {
 h1 {
     text-align: center;
     color: #7195C3;
-    font-size: 30px;
+    font-size: 36px;
+    padding: 20px 0;
+    font-family: 'Cafe24Moyamoya-Regular-v1.0';
 }
+
+/*radio custom*/
+input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.option {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    color: #4F719D;
+    width: 280px;
+    margin: 0 auto;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 1px solid #4F719D;
+    border-radius: 50%;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+.option input:checked~.checkmark:after {
+    display: block;
+}
+
+.option .checkmark:after {
+    top: 4.2px;
+    left: 4.8px;
+    width: 9.5px;
+    height: 9.5px;
+    border-radius: 50%;
+    background: #4F719D;
+}
+
 
 .frame {
     display: none;
@@ -65,11 +128,34 @@ h1 {
     display: block;
 }
 
+#gender-frame {
+    margin-top: 70px;
+    text-align: center;
+}
+
+#gender-frame h2 {
+    font-size: 20px;
+    color: #4F719D;
+}
+
+#gender-frame .gender-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+#gender-frame .charactor {
+    margin-top: 80px;
+}
+
+
 .progress-bar {
     width: 100%;
-    height: 10px;
+    height: 15px;
     background-color: #93BCF2;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 20px 0;
     overflow: hidden;
 }
@@ -77,15 +163,38 @@ h1 {
 .progress {
     height: 100%;
     background-color: #4F719D;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: width 0.3s ease;
 }
 
-.question-number {
-    font-size: 14px;
-    color: #666;
+.question-degree .question-number {
+    color: #93BCF2;
+    font-size: 16px;
     margin-bottom: 10px;
 }
+
+.question {
+    margin-top: 50px;
+}
+
+.question h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4F719D;
+}
+
+.question .options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.nav-btn {
+    margin: 50px auto 0;
+}
+
+
 
 @keyframes fadeIn {
     from {
