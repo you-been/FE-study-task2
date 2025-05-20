@@ -129,7 +129,7 @@ input {
 }
 
 #gender-frame {
-    margin-top: 70px;
+    margin-top: 40px;
     text-align: center;
 }
 
@@ -143,11 +143,35 @@ input {
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 #gender-frame .charactor {
     margin-top: 80px;
+}
+
+#result-frame .result-container {
+    background-color: #FFFDA4;
+    padding: 30px;
+}
+
+#result-frame .result-container .result-description {
+    text-align: left;
+    color: #4F719D;
+    margin-top: 30px;
+}
+
+#result-frame .result-container #result-title {
+    width: fit-content;
+    background-color: #7195C3;
+    color: #fff;
+    height: 34px;
+    padding: 5px 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: 0 auto;
 }
 
 
@@ -190,7 +214,7 @@ input {
     margin-top: 40px;
 }
 
-.nav-btn {
+.nav-btn, .result-btn {
     margin: 50px auto 0;
 }
 
