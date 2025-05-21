@@ -1,28 +1,101 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MINI THINGS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MINI THINGS</title>
 </head>
 <style>
-	a {
-		color: #000;
-		text-decoration: none;
-	}
-	ul	{
-		list-style: none;
-	}
-	.root-wrapper {
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-	}
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'GmarketSansMedium', sans-serif;
+}
+
+.root-wrapper {
+    background-color: #2A221F;
+    min-height: 100vh;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.root-link {
+	margin: 50px auto;
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	height: 300px;
+}
+
+.root-link li {
+    background-color: #BCFFD9;
+    border-radius: 50%;
+    width: 160px;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+}
+
+.root-link li:nth-child(1) {
+	left: 10%;
+	top: 0;
+}
+.root-link li:nth-child(2) {
+	right: 10%;
+	bottom: 0;
+}
+
+.root-link li a {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	text-align: center;
+}
+
+.root-wrapper h1 {
+    height: 80px;
+    text-indent: -9999px;
+    background: url(./images/tit.png) no-repeat 50% 50% / cover;
+    width: 290px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 </style>
+
 <body>
-	<div class="root-wrapper">
-		<ul class="root-link">
-			<li><a href="/estes-test">에겐&테토 테스트</a></li>
-			<li><a href="/rock-sissors-paper">가위바위보 게임</a></li>
-		</ul>
-	</div>
+    <div class="root-wrapper">
+        <h1>BEEN's MINITHINGS</h1>
+        <ul class="root-link">
+            <li><a href="/FE-study-task2/estes-test">에겐&테토<br>테스트</a></li>
+            <li><a href="/FE-study-task2/rock-sissors-paper">가위바위보 게임</a></li>
+        </ul>
+    </div>
 </body>
+
 </html>
