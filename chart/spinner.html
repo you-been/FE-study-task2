@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Spinner</title>
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <style>
         body {
-            min-height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            background: #123;
-            margin: 0;
-        }
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        overflow: hidden;
+    }
+    a {
+        color: #000;
+        text-decoration: none;
+    }
 
-        /*.spinner {
+    #section1 {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+    }
+
+    #section1::after {
+        content: "";
+        position: absolute;
+        left: 0; top: 0;
+        z-index: -1;
+        width: 100%; height: 100%;
+        background: url(./images/bg1.png) center/cover no-repeat;
+        animation: zoominAni 7s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+
+    .loading-wrap {
+        position: absolute;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    /*.spinner {
             position: relative;
             width: 200px;
             height: 200px;
@@ -24,35 +62,173 @@
             border-radius: 50%;
             animation: a-rotate 3000ms ease-in-out infinite;
         }*/
-        .spinner {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            background: #ddd;
-            -webkit-mask: radial-gradient(transparent 89.5px, white 90.5px);
-            mask: radial-gradient(transparent 89.5px, white 90.5px);
-            border-radius: 50%;
-            animation: a-rotate 3000ms ease-in-out infinite;
-        }
+    .spinner {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background: #ddd;
+        -webkit-mask: radial-gradient(transparent 85px, white 86px);
+        mask: radial-gradient(transparent 85px, white 86px);
+        border-radius: 50%;
+        animation: a-rotate 2000ms ease-in-out infinite;
+    }
 
-        .spinner::after {
-            content: '';
+    .spinner::after {
+        content: '';
+        position: absolute;
+        left: 32%;
+        height: 22px;
+        width: 70px;
+        border-radius: 50px;
+        background: rgba(158, 87, 255, 1);
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    #section1 .nav-slide {
+        display: flex;
+        gap: 20px;
+        color: #fff;
+        font-size: 20px;
+    }
+
+           /* Slick 화살표 커스터마이징 */
+        .slick-prev, .slick-next {
+            font-size: 0;
+            line-height: 0;
             position: absolute;
-            left: 50%;
-            height: 10px;
+            top: 50%;
+            display: block;
             width: 30px;
-            border-radius: 30px;
-            background: purple;
+            height: 30px;
+            padding: 0;
+            margin-top: -15px;
+            cursor: pointer;
+            background: transparent;
+            color: transparent;
+            border: none;
+            outline: none;
+            z-index: 1000;
+        }
+        
+        .slick-prev:hover, .slick-next:hover {
+            color: transparent;
+            outline: none;
+            background: transparent;
+        }
+        
+        .slick-prev:before, .slick-next:before {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            line-height: 1;
+            opacity: 1;
+            color: #fff;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slick-prev {
+            left: -45px;
+        }
+        
+        .slick-prev:before {
+            content: "‹";
+        }
+        
+        .slick-next {
+            right: -45px;
+        }
+        
+        .slick-next:before {
+            content: "›";
+        }
+        
+        /* 화살표가 컨테이너 안에 오도록 조정 (옵션) */
+        .nav-container-inner {
+            position: relative;
+            margin: 0 50px;
+        }
+        
+        .nav-container-inner .slick-prev {
+            left: -40px;
+        }
+        
+        .nav-container-inner .slick-next {
+            right: -40px;
         }
 
-        @keyframes a-rotate { 
-            to { 
-                transform: rotateZ(360deg); 
-            } 
+    @keyframes a-rotate {
+        to {
+            transform: rotateZ(360deg);
         }
+    }
+
+   @keyframes zoominAni {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+}
     </style>
 </head>
+
 <body>
-    <div class="spinner"></div>
+    <div id="section1">
+        <div class="hd_nav">
+            <div class="nav-slide">
+              <div><a href="javascript:void(0)">nav1</a></div>
+              <div><a href="javascript:void(0)">nav2</a></div>
+              <div><a href="javascript:void(0)">nav3</a></div>
+              <div><a href="javascript:void(0)">nav4</a></div>
+              <div><a href="javascript:void(0)">nav5</a></div>
+              <div><a href="javascript:void(0)">nav6</a></div>
+              <div><a href="javascript:void(0)">nav7</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="loading-wrap">
+        <div class="spinner" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="loading-text">Loading</div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+    const loadingText = document.querySelector('.loading-text');
+    let dotCount = 0;
+
+
+    $(document).ready(function() {
+        setInterval(() => {
+            dotCount = (dotCount + 1) % 4;
+            loadingText.textContent = 'Loading' + '.'.repeat(dotCount);
+        }, 500);
+
+
+       $('.nav-slide').slick({
+                slidesToShow: 5,        // 한 번에 5개 메뉴 표시
+                slidesToScroll: 1,      // 한 번에 1개씩 이동
+                autoplay: false,        // 자동 재생 끄기
+                dots: false,            // 페이지네이션 점 숨김
+                arrows: true,           // 화살표 버튼 표시
+                infinite: false,        // 무한 루프 끄기
+                variableWidth: false,   // 고정 너비
+                centerMode: false,      // 센터 모드 끄기
+                focusOnSelect: true     // 클릭 시 해당 슬라이드로 이동
+            });
+    });
+    </script>
 </body>
+
 </html>
