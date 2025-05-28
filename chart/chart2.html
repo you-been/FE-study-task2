@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTD Trend Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .chart-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chart-icons {
+            display: flex;
+            gap: 10px;
+            color: #999;
+            font-size: 14px;
+        }
+        #chart {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <div class="chart-title">
+            OTD Trend - %OTD, Average Release duration
+            <div class="chart-icons">
+                <span>□ ↗ ⚙ ↻ ▼</span> 
+            </div>
+        </div>
+        <div id="chart"></div>
+    </div>
+
+    <script>
+        // ECharts 인스턴스 초기화
+        const chart = echarts.init(document.getElementById('chart'));
+        
+        // 차트 옵션 설정
+        const option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            legend: {
+                data: ['BATCH No.', '#On-time batch', 'Avg.Disposition Duration', '%On-time Rate'],
+                bottom: 10,
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['2025-06', '2025-07', '2025-08', '2025-08', '2025-08', '2025-08'],
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    axisLabel: {
+                        fontSize: 11,
+                        color: '#666'
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '',
+                    min: 0,
+                    max: 60,
+                    interval: 10,
+                    axisLabel: {
+                        formatter: '{value}',
+                        fontSize: 11,
+                        color: '#666'
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#f0f0f0'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '',
+                    min: 0,
+                    max: 60,
+                    interval: 10,
+                    axisLabel: {
+                        formatter: '{value}',
+                        fontSize: 11,
+                        color: '#666'
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: 'BATCH No.',
+                    type: 'bar',
+                    data: [2, 3, 4, 3, 3, 3],
+                    itemStyle: {
+                        color: '#8B5CF6',
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    barWidth: '15%'
+                },
+                {
+                    name: '#On-time batch',
+                    type: 'bar',
+                    data: [0, 0, 8, 30, 8, 8],
+                    itemStyle: {
+                        color: '#EC4899',
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    barWidth: '15%'
+                },
+                {
+                    name: 'Avg.Disposition Duration',
+                    type: 'bar',
+                    data: [41, 47, 47, 30, 47, 47],
+                    itemStyle: {
+                        color: '#2563EB',
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    barWidth: '15%',
+                    label: {
+                        show: true,
+                        position: 'top',
+                        color: 'white',
+                        fontSize: 12,
+                        fontWeight: 'bold',
+                        backgroundColor: '#2563EB',
+                        padding: [3, 6],
+                        borderRadius: 2
+                    }
+                },
+                {
+                    name: '%On-time Rate',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: [2, 5, 8, 25, 6, 4],
+                    itemStyle: {
+                        color: 'rgba(0, 252, 228, 1)'
+                    },
+                    lineStyle: {
+                        color: 'rgba(0, 252, 228, 1)',
+                        width: 2
+                    },
+                    symbol: 'circle',
+                    symbolSize: 6
+                }
+            ],
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '15%',
+                top: '10%',
+                containLabel: true
+            }
+        };
+
+        // 차트 렌더링
+        chart.setOption(option);
+
+        // 창 크기 변경시 차트 리사이즈
+        window.addEventListener('resize', function() {
+            chart.resize();
+        });
+    </script>
+</body>
+</html>

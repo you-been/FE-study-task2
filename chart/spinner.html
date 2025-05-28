@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Spinner</title>
-     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <style>
         body {
         min-height: 100vh;
@@ -93,79 +93,60 @@
 
     #section1 .nav-slide {
         display: flex;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #section1 .nav-slide .slick-track{
+        display: flex;
         gap: 20px;
         color: #fff;
         font-size: 20px;
     }
+    #section1 .nav-slide .slick-track .slick-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #section1 .nav-slide .slick-track .slick-slide a {
+        width: 100%;
+        display: inline-block;
+    }
 
-           /* Slick 화살표 커스터마이징 */
+
+ /* Slick 화살표 커스터마이징 */
         .slick-prev, .slick-next {
-            font-size: 0;
-            line-height: 0;
-            position: absolute;
-            top: 50%;
-            display: block;
-            width: 30px;
-            height: 30px;
-            padding: 0;
-            margin-top: -15px;
-            cursor: pointer;
-            background: transparent;
-            color: transparent;
-            border: none;
-            outline: none;
-            z-index: 1000;
-        }
-        
-        .slick-prev:hover, .slick-next:hover {
-            color: transparent;
-            outline: none;
-            background: transparent;
-        }
-        
-        .slick-prev:before, .slick-next:before {
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            line-height: 1;
-            opacity: 1;
-            color: #fff;
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 1;
+            width: 40px;
+            height: 40px;
         }
         
         .slick-prev {
-            left: -45px;
-        }
-        
-        .slick-prev:before {
-            content: "‹";
+            left: -50px;
         }
         
         .slick-next {
-            right: -45px;
+            right: -50px;
         }
         
-        .slick-next:before {
-            content: "›";
+        .slick-prev:before, .slick-next:before {
+            font-size: 30px;
+            color: #007bff;
         }
         
-        /* 화살표가 컨테이너 안에 오도록 조정 (옵션) */
-        .nav-container-inner {
-            position: relative;
-            margin: 0 50px;
+        /* 1800px 이하에서만 화살표 표시 */
+        @media (min-width: 1801px) {
+            .slick-prev, .slick-next {
+                display: none !important;
+            }
         }
         
-        .nav-container-inner .slick-prev {
-            left: -40px;
-        }
-        
-        .nav-container-inner .slick-next {
-            right: -40px;
+        .info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e9f4ff;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
         }
 
     @keyframes a-rotate {
@@ -185,50 +166,71 @@
     <div id="section1">
         <div class="hd_nav">
             <div class="nav-slide">
-              <div><a href="javascript:void(0)">nav1</a></div>
-              <div><a href="javascript:void(0)">nav2</a></div>
-              <div><a href="javascript:void(0)">nav3</a></div>
-              <div><a href="javascript:void(0)">nav4</a></div>
-              <div><a href="javascript:void(0)">nav5</a></div>
-              <div><a href="javascript:void(0)">nav6</a></div>
-              <div><a href="javascript:void(0)">nav7</a></div>
+                <div><a href="javascript:void(0)">nav1</a></div>
+                <div><a href="javascript:void(0)">nav2</a></div>
+                <div><a href="javascript:void(0)">nav3</a></div>
+                <div><a href="javascript:void(0)">nav4</a></div>
+                <div><a href="javascript:void(0)">nav5</a></div>
+                <div><a href="javascript:void(0)">nav6</a></div>
+                <div><a href="javascript:void(0)">nav7</a></div>
             </div>
         </div>
     </div>
-    <div class="loading-wrap">
+    <!-- <div class="loading-wrap">
         <div class="spinner" role="status">
             <span class="sr-only">Loading...</span>
         </div>
         <div class="loading-text">Loading</div>
-    </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script>
+    </div> -->
+<!-- jQuery CDN (필수) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Slick Carousel JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+$(document).ready(function() {
     const loadingText = document.querySelector('.loading-text');
-    let dotCount = 0;
-
-
-    $(document).ready(function() {
+    if (loadingText) {
+        let dotCount = 0;
         setInterval(() => {
             dotCount = (dotCount + 1) % 4;
             loadingText.textContent = 'Loading' + '.'.repeat(dotCount);
         }, 500);
+    }
 
-
-       $('.nav-slide').slick({
-                slidesToShow: 5,        // 한 번에 5개 메뉴 표시
-                slidesToScroll: 1,      // 한 번에 1개씩 이동
-                autoplay: false,        // 자동 재생 끄기
-                dots: false,            // 페이지네이션 점 숨김
-                arrows: true,           // 화살표 버튼 표시
-                infinite: false,        // 무한 루프 끄기
-                variableWidth: false,   // 고정 너비
-                centerMode: false,      // 센터 모드 끄기
-                focusOnSelect: true     // 클릭 시 해당 슬라이드로 이동
-            });
+    // Slick 슬라이더 초기화
+    $('.nav-slide').slick({
+        slidesToShow: 7,        // 기본적으로 모든 메뉴 표시
+        slidesToScroll: 1,      
+        autoplay: false,        
+        dots: false,            
+        arrows: false,          // 큰 화면에서는 화살표 숨김
+        infinite: false,        
+        variableWidth: false,   
+        centerMode: false,      
+        focusOnSelect: true,
+        responsive: [
+            {
+                breakpoint: 1800,   // 1800px 이하일 때부터 슬라이드 활성화
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    arrows: true,       // 슬라이드가 필요할 때 화살표 표시
+                    infinite: false
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    arrows: true
+                }
+            }
+        ]
     });
-    </script>
+});
+</script>
 </body>
 
 </html>
